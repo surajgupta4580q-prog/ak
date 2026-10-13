@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080b20">
+<title>Akshara's Midnight Universe ✦</title>
+<style>
+:root{--bg:#080b20;--ink:#f8f2ff;--muted:#c6c2df;--gold:#ffd98a;--pink:#ff9fd0;--lav:#bba8ff;--panel:rgba(19,23,57,.78)}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;overscroll-behavior:none}body{height:100dvh}button{font:inherit;touch-action:manipulation}button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+#sky,#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}#sky{z-index:0}#fx{z-index:8}
+.app{position:relative;z-index:1;width:100%;height:100dvh;overflow:hidden;isolation:isolate}.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(20px + env(safe-area-inset-top)) 22px calc(96px + env(safe-area-inset-bottom));opacity:0;visibility:hidden;transform:scale(1.045) translateY(12px);transition:opacity .55s ease,transform .7s cubic-bezier(.2,.8,.2,1),visibility .55s;overflow:hidden}.scene.active{opacity:1;visibility:visible;transform:scale(1);z-index:2}.scene.leaving{transform:scale(.96) translateY(-12px);opacity:0}.scene:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 50% 32%,rgba(79,68,155,.22),transparent 55%),linear-gradient(155deg,rgba(9,12,35,.18),rgba(5,7,20,.64))}
+.eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}.serif{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.035em}.big{font-size:clamp(2.5rem,11vw,4.6rem);line-height:.98;margin:8px 0 18px}.mid{font-size:clamp(1.9rem,8vw,3.1rem);line-height:1.05;margin:8px 0 14px}.copy{font-size:clamp(.93rem,3.8vw,1.08rem);line-height:1.62;color:#e3def7;max-width:430px;margin:0 auto}.small{font-size:.78rem;color:var(--muted);line-height:1.5}.gold{color:var(--gold)}.pink{color:var(--pink)}.glow{text-shadow:0 0 22px rgba(255,217,138,.55),0 0 52px rgba(187,168,255,.32)}
+.btn{border:1px solid rgba(255,226,171,.58);color:#17142d;background:linear-gradient(135deg,#ffe6a6,#ffb8d9);border-radius:999px;padding:13px 21px;min-height:48px;font-weight:750;box-shadow:0 8px 32px rgba(255,159,208,.22);cursor:pointer;transition:transform .18s,filter .18s}.btn:active{transform:scale(.96)}.btn.secondary{background:rgba(255,255,255,.06);color:var(--ink);border-color:rgba(205,194,255,.35);box-shadow:none}.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px;max-width:420px}.bottom{position:absolute;z-index:12;left:0;right:0;bottom:calc(8px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 14px}.navbtn{background:rgba(13,16,43,.78);color:#f8f2ff;border:1px solid rgba(220,215,255,.25);border-radius:999px;padding:10px 14px;min-height:42px;font-size:.85rem;backdrop-filter:blur(10px)}.navbtn:disabled{opacity:.25}.progress{display:flex;gap:5px;justify-content:center;align-items:center;flex:1}.dot{width:5px;height:5px;border-radius:10px;background:#777394;transition:all .25s}.dot.on{width:19px;background:var(--gold)}.toptools{position:absolute;top:calc(10px + env(safe-area-inset-top));right:13px;z-index:13;display:flex;gap:8px}.iconbtn{width:40px;height:40px;border-radius:50%;border:1px solid #ffffff35;color:#fff;background:#111633ad;font-size:1rem}
+.moon{font-size:clamp(4rem,20vw,7rem);filter:drop-shadow(0 0 25px #b7a4ff99);animation:float 4s ease-in-out infinite}.halo{position:absolute;width:min(78vw,330px);aspect-ratio:1;border:1px solid #b9a7ff35;border-radius:50%;box-shadow:0 0 65px #8c7aff15,inset 0 0 55px #8c7aff12;animation:spin 36s linear infinite;pointer-events:none}.halo:before,.halo:after{content:"✦";position:absolute;color:var(--gold);font-size:1.3rem}.halo:before{top:10%;left:14%}.halo:after{right:9%;bottom:17%;color:var(--pink)}
+.gift{font-size:clamp(6rem,28vw,9rem);line-height:1.2;filter:drop-shadow(0 18px 30px #0008);animation:giftFloat 2.6s ease-in-out infinite;cursor:pointer;user-select:none}.gift.open{animation:giftBurst .8s forwards}.cake{font-size:clamp(6rem,25vw,8rem);filter:drop-shadow(0 0 32px #ffca7a66);animation:float 3s ease-in-out infinite}.daisy{font-size:clamp(6rem,26vw,8rem);animation:doggo 2.2s ease-in-out infinite;filter:drop-shadow(0 14px 25px #0007)}.bubble{border:1px solid #d4c7ff45;background:var(--panel);padding:16px 18px;border-radius:22px;max-width:380px;box-shadow:0 15px 50px #0003}.cardgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;width:min(100%,390px);margin-top:18px}.mini{border:1px solid #c9bdff35;background:linear-gradient(145deg,#22254dba,#11142dba);border-radius:18px;padding:13px 9px;min-height:88px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}.mini strong{font-size:.92rem}.mini span{font-size:.76rem;color:#d3cee9}.letter{width:min(100%,420px);max-height:52dvh;overflow:hidden;text-align:left;border:1px solid #ffe2ac50;background:linear-gradient(145deg,#fff0dceF,#ffe1ebef);color:#28213c;border-radius:20px;padding:clamp(15px,4vw,23px);box-shadow:0 18px 60px #0005;font-family:Georgia,serif;font-size:clamp(.82rem,3.3vw,.98rem);line-height:1.48}.letter p{margin:0 0 9px}.letter .sign{text-align:right;color:#7d3f80;margin-top:10px}.starsgame{position:relative;width:min(100%,380px);height:min(37dvh,290px);border:1px solid #c7b9ff35;border-radius:24px;background:radial-gradient(ellipse at center,#27204d88,transparent 72%);overflow:hidden;margin-top:16px}.tapstar{position:absolute;border:0;background:transparent;color:var(--gold);font-size:2rem;filter:drop-shadow(0 0 12px #ffd98a99);padding:8px;animation:twinkle 1.5s ease-in-out infinite alternate}.tapstar.got{transform:scale(1.8);opacity:0;transition:.3s;pointer-events:none}.wishline{font-size:.84rem;color:var(--gold);min-height:24px;margin-top:10px}.constellation{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;max-width:320px;margin:18px auto}.constellation span{font-size:clamp(1.7rem,7vw,2.5rem);color:var(--gold);text-shadow:0 0 18px #ffd98a88;animation:twinkle 1.4s infinite alternate}.finalname{font-size:clamp(2.8rem,13vw,5rem);letter-spacing:.06em;background:linear-gradient(90deg,#fff1b7,#ff9fd0,#c5b4ff,#fff1b7);background-size:250% auto;color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+#toast{position:absolute;z-index:15;top:calc(56px + env(safe-area-inset-top));left:50%;transform:translate(-50%,-12px);opacity:0;pointer-events:none;background:#171a3bec;border:1px solid #fff3;border-radius:999px;padding:9px 15px;font-size:.82rem;white-space:nowrap;transition:.3s}#toast.show{opacity:1;transform:translate(-50%,0)}.confetti{position:fixed;z-index:9;pointer-events:none;animation:fall 1.8s ease-out forwards;font-size:1.2rem}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}@keyframes giftFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}@keyframes giftBurst{0%{transform:scale(1) rotate(0)}35%{transform:scale(1.18) rotate(-8deg)}100%{transform:scale(.1) rotate(30deg);opacity:0}}@keyframes doggo{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(4deg) translateY(-8px)}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes twinkle{from{opacity:.55;transform:scale(.9)}to{opacity:1;transform:scale(1.12)}}@keyframes shimmer{to{background-position:250% center}}@keyframes fall{0%{transform:translateY(-20px) rotate(0);opacity:1}100%{transform:translateY(100vh) rotate(600deg);opacity:0}}
+@media(max-height:690px){.scene{padding-top:52px;padding-bottom:85px}.big{font-size:clamp(2.1rem,9vw,3.6rem)}.mid{font-size:clamp(1.65rem,7vw,2.5rem)}.letter{max-height:46dvh;font-size:.79rem;line-height:1.38}.letter p{margin-bottom:6px}.cake,.daisy{font-size:5rem}.gift{font-size:6rem}.copy{line-height:1.45}.cardgrid{gap:7px;margin-top:12px}.mini{min-height:72px;padding:8px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<canvas id="sky"></canvas><canvas id="fx"></canvas>
+<div class="app" id="app">
+  <div class="toptools"><button class="iconbtn" id="soundBtn" aria-label="Toggle sound" title="Sound on/off">♫</button></div>
+  <div id="toast" role="status"></div>
+
+  <section class="scene active" data-scene="0" aria-label="Welcome">
+    <div class="halo"></div><div class="moon">☾</div><div class="eyebrow">a tiny universe, made just for you</div>
+    <h1 class="big serif glow">Hey, <span class="pink">Akshara</span> ✦</h1>
+    <p class="copy">Psst… 👀 tumhare liye ek chhota sa surprise hai.<br><span class="small">Warning: thoda extra effort laga hai. Appreciation allowed hai. 😂</span></p>
+    <div class="actions"><button class="btn" data-next>Who's there? ✨</button></div>
+  </section>
+
+  <section class="scene" data-scene="1" aria-label="Choose your path">
+    <div class="eyebrow">important question, madam ji</div><h2 class="mid serif">Surprise unlock karne se pehle…</h2>
+    <p class="copy">Aap kis category mein aati hain? 😌</p>
+    <div class="cardgrid">
+      <button class="mini choice" data-choice="smart"><strong>🧠 Intelligent</strong><span>Obviously, no doubt</span></button>
+      <button class="mini choice" data-choice="cute"><strong>🎀 Cute</strong><span>Evidence is pending</span></button>
+      <button class="mini choice" data-choice="dog"><strong>🐶 Daisy's human</strong><span>Most important role</span></button>
+      <button class="mini choice" data-choice="all"><strong>✨ All of the above</strong><span>Self-confidence 100%</span></button>
+    </div>
+    <p class="small" style="margin-top:15px">Choose carefully. Iska result tumhari reputation decide karega. 😂</p>
+    <div class="actions"><button class="btn secondary" data-next>Skip, I’m mysterious</button></div>
+  </section>
+
+  <section class="scene" data-scene="2" aria-label="Gift reveal">
+    <div class="eyebrow">classified birthday delivery 🎁</div><h2 class="mid serif">Aapka parcel aa gaya.</h2>
+    <div class="gift" id="gift" role="button" tabindex="0" aria-label="Open gift">🎁</div>
+    <p class="copy" id="giftText">Gift pe tap karo, madam ji.<br>Delivery boy kaafi mehnat se laaya hai. 😂</p>
+    <div class="actions"><button class="btn" id="openGift">Unlock your gift ✨</button></div>
+  </section>
+
+  <section class="scene" data-scene="3" aria-label="Birthday reveal">
+    <div class="eyebrow">today, the universe celebrates you</div><div class="cake">🎂</div>
+    <h2 class="mid serif glow">Happy Birthday,<br><span class="gold">Akshara!</span></h2>
+    <p class="copy">Aaj cake extra, tension zero, aur smile full brightness pe. ✨</p>
+    <div class="actions"><button class="btn" id="wishBtn">Make a wish 🌠</button></div>
+  </section>
+
+  <section class="scene" data-scene="4" aria-label="Daisy surprise">
+    <div class="eyebrow">special guest alert 🐾</div><div class="daisy" id="daisy">🐶</div>
+    <h2 class="mid serif">Daisy has entered the chat.</h2>
+    <div class="bubble"><p class="copy" id="daisyLine">“Excuse me! Birthday girl toh Akshara hai… attention saari mujhe kyun mil rahi hai? 🐾”</p></div>
+    <p class="small" style="margin-top:12px">Tap Daisy for an important announcement.</p>
+    <div class="actions"><button class="btn" id="daisyBtn">Tap for Daisy's message 🦴</button></div>
+  </section>
+
+  <section class="scene" data-scene="5" aria-label="Star wishes">
+    <div class="eyebrow">mini mission: collect the wishes</div><h2 class="mid serif">Catch the stars ✦</h2>
+    <p class="small">Tap all 6 glowing stars to unlock your birthday wishes.</p>
+    <div class="starsgame" id="starsgame" aria-label="Tap each star"></div>
+    <div class="wishline" id="wishline">0 / 6 wishes unlocked</div>
+    <div class="actions"><button class="btn" id="finishGame" disabled>Unlock the letter 🔒</button></div>
+  </section>
+
+  <section class="scene" data-scene="6" aria-label="Birthday letter">
+    <div class="eyebrow">from your slightly extra Snapchat friend</div><h2 class="mid serif">Madam ji, yeh aapke liye 💌</h2>
+    <div class="letter" id="letter">
+      <p><strong>Hey Akshara, Happy Birthdayyy! 🎂✨</strong></p>
+      <p>Humari online friendship ko abhi zyada time nahi hua, but normal sa “HBD, enjoy” bhej ke kaam chalaana thodi kanjoosi ho jaati. Toh lo ji, madam ke liye poori website bana di. Effort dekho zara. 😂</p>
+      <p>Intelligent toh tum lagti ho… bas birthday ke din itni padhai mat kar lena ki cake hi attendance laga ke chala jaaye. 📚😭 College mein खूब progress karo, goals achieve karo, aur life ko enjoy bhi karna, topper sahiba!</p>
+      <p>Daisy ko meri taraf se extra treats dena. 🐶 Uski party mein entry free hai, bas mujhe invite karna mat bhoolna. Treats ka budget tumhara, wishes meri. 😂🦴</p>
+      <p>Jokes apart, I genuinely hope tumhara year happiness, good health, success aur funny memories se bhara ho. Hamesha apni smart, mast aur thodi mysterious self rehna. Aur itni tareef sun ke attitude 200% mat kar lena. 😌🌟</p>
+      <p><strong>Aaj ke din tension side mein, cake front mein. Have the best birthday! 💗</strong></p>
+      <p class="sign">— Tumhara Snapchat wala dost,<br>jo “normal wish” karne mein thoda extra nikla 😂💙</p>
+    </div>
+    <div class="actions"><button class="btn" data-next>Okay, emotional mat ho 😭</button></div>
+  </section>
+
+  <section class="scene" data-scene="7" aria-label="Future wishes">
+    <div class="eyebrow">a few wishes for your next chapter</div><h2 class="mid serif">Your next level ✨</h2>
+    <div class="cardgrid">
+      <div class="mini"><strong>🎓 College wins</strong><span>Marks bhi achhe, memories bhi</span></div>
+      <div class="mini"><strong>🌱 Growth</strong><span>Apne goals pe full focus</span></div>
+      <div class="mini"><strong>💛 Good people</strong><span>Jo tumhari vibe samjhein</span></div>
+      <div class="mini"><strong>🐾 Daisy time</strong><span>Extra cuddles, daily quota</span></div>
+    </div>
+    <p class="copy" style="margin-top:18px">May life surprise you in the best ways — and may your camera roll contain 90% Daisy. As it should. 😂</p>
+    <div class="actions"><button class="btn" data-next>One last surprise? 🌌</button></div>
+  </section>
+
+  <section class="scene" data-scene="8" aria-label="Final reveal">
+    <div class="eyebrow">end credits ✦</div><div class="constellation" id="constellation"><span>✦</span><span>⋆</span><span>✧</span><span>✦</span><span>⋆</span></div>
+    <h2 class="finalname serif">AKSHARA</h2>
+    <p class="copy" id="finalCopy">Internet pe randomly mile the… par birthday wish thodi memorable honi chahiye na, madam? 😂💙</p>
+    <p class="copy gold" style="margin-top:12px">Happy Birthday! Keep shining — and give Daisy a tiny boop from me. 🐶✨</p>
+    <div class="actions"><button class="btn" id="finalBtn">One last little thing 💫</button><button class="btn secondary" id="replayBtn">Replay the magic ↺</button></div>
+    <p class="small" id="finalSecret" style="margin-top:12px;opacity:0">P.S. Ab website ki tareef kar do. Itni mehnat free mein hui hai. 😭😂</p>
+  </section>
+
+  <nav class="bottom" aria-label="Scene navigation">
+    <button class="navbtn" id="backBtn" disabled>← Back</button>
+    <div class="progress" id="progress" aria-label="Progress"></div>
+    <button class="navbtn" id="nextBtn">Next →</button>
+  </nav>
+</div>
+<script>
+(() => {
+ const scenes=[...document.querySelectorAll('.scene')], progress=document.getElementById('progress');
+ let current=0, soundOn=false, audioCtx=null, collected=0, wishIndex=0;
+ const wishes=['Happiness 💛','College success 🎓','Good health 🌿','Fun adventures ✈️','Good people 🫶','Daisy cuddles 🐾'];
+ const dots=scenes.map((_,i)=>{const d=document.createElement('span');d.className='dot'+(i===0?' on':'');progress.appendChild(d);return d});
+ const back=document.getElementById('backBtn'), next=document.getElementById('nextBtn');
+ function go(n){n=Math.max(0,Math.min(scenes.length-1,n));if(n===current)return;const old=scenes[current];old.classList.add('leaving');setTimeout(()=>old.classList.remove('leaving'),650);scenes[current].classList.remove('active');current=n;scenes[current].classList.add('active');dots.forEach((d,i)=>d.classList.toggle('on',i===current));back.disabled=current===0;next.disabled=current===scenes.length-1;next.textContent=current===scenes.length-1?'End ✦':'Next →';if(current===3)confetti(24);if(current===5&&!document.getElementById('starsgame').children.length)setupStars();if(current===8)confetti(55);if(soundOn)tone(620,.08)}
+ function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+ function tone(freq=440,dur=.12){if(!soundOn)return;try{audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(.0001,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.06,audioCtx.currentTime+.02);g.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+dur);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+dur+.02)}catch(e){}}
+ document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>go(current+1)));back.addEventListener('click',()=>go(current-1));next.addEventListener('click',()=>go(current+1));
+ document.querySelectorAll('.choice').forEach(b=>b.addEventListener('click',()=>{const msgs={smart:'Correct answer? Maybe. Hum verify karenge. 😂',cute:'Evidence collect kar rahe hain… Daisy witness hai. 🐶',dog:'Finally, the most accurate answer. Daisy supremacy! 🐾',all:'Confidence level: birthday queen. Approved. 👑'};toast(msgs[b.dataset.choice]);tone(740,.12);setTimeout(()=>go(2),650)}));
+ const gift=document.getElementById('gift');function openGift(){if(gift.classList.contains('open'))return;gift.classList.add('open');document.getElementById('giftText').innerHTML='Surprise loading… ✨';document.getElementById('openGift').disabled=true;confetti(36);tone(880,.15);setTimeout(()=>go(3),900)}document.getElementById('openGift').addEventListener('click',openGift);gift.addEventListener('click',openGift);gift.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openGift()}});
+ document.getElementById('wishBtn').addEventListener('click',()=>{confetti(65);document.querySelector('.cake').textContent='🎂✨';toast('Wish accepted by the universe 🌠');tone(880,.25);setTimeout(()=>go(4),900)});
+ const dogLines=['“Announcement: Daisy deserves 3 treats today. Minimum. No negotiations. 🐶🦴”','“Akshara, tumhari birthday hai… but main hi cutest gift hoon. Facts are facts. 🐾”','“Treats ka budget tumhara, cuteness meri. Happy Birthday, human! 😂💗”'];let dogI=0;function dogTap(){document.getElementById('daisy').textContent=['🐶','🐕','🐶'][dogI%3];document.getElementById('daisyLine').textContent=dogLines[dogI%dogLines.length];dogI++;confetti(12);tone(520,.1)}document.getElementById('daisyBtn').addEventListener('click',dogTap);document.getElementById('daisy').addEventListener('click',dogTap);
+ function setupStars(){const area=document.getElementById('starsgame');area.innerHTML='';collected=0;wishIndex=0;document.getElementById('wishline').textContent='0 / 6 wishes unlocked';document.getElementById('finishGame').disabled=true;for(let i=0;i<6;i++){const b=document.createElement('button');b.className='tapstar';b.textContent='✦';b.setAttribute('aria-label','Collect wish '+(i+1));const pos=[[12,15],[65,12],[38,42],[78,56],[18,66],[48,77]][i];b.style.left=pos[0]+'%';b.style.top=pos[1]+'%';b.style.animationDelay=(i*.17)+'s';b.addEventListener('click',()=>{if(b.classList.contains('got'))return;b.classList.add('got');collected++;document.getElementById('wishline').textContent=collected+' / 6 — '+wishes[wishIndex++];toast(wishes[wishIndex-1]);tone(600+collected*65,.12);if(collected===6){document.getElementById('wishline').textContent='All wishes unlocked! You’re a star! 🌟';document.getElementById('finishGame').disabled=false;confetti(28)}});area.appendChild(b)}}
+ document.getElementById('finishGame').addEventListener('click',()=>go(6));
+ document.getElementById('soundBtn').addEventListener('click',()=>{soundOn=!soundOn;document.getElementById('soundBtn').textContent=soundOn?'♫♪':'♫';document.getElementById('soundBtn').setAttribute('aria-label',soundOn?'Mute sound':'Enable sound');if(soundOn){tone(660,.1);toast('Tiny sounds on ✨')}else toast('Sound off')});
+ document.getElementById('finalBtn').addEventListener('click',()=>{document.getElementById('finalSecret').style.opacity='1';confetti(28);tone(780,.2)});
+ document.getElementById('replayBtn').addEventListener('click',()=>{gift.classList.remove('open');document.getElementById('openGift').disabled=false;document.getElementById('giftText').innerHTML='Gift pe tap karo, madam ji.<br>Delivery boy kaafi mehnat se laaya hai. 😂';document.querySelector('.cake').textContent='🎂';document.getElementById('finalSecret').style.opacity='0';go(0)});
+ function confetti(count=25){const emojis=['✦','✧','✨','💛','💗','🎉'];for(let i=0;i<count;i++){const s=document.createElement('span');s.className='confetti';s.textContent=emojis[Math.floor(Math.random()*emojis.length)];s.style.left=Math.random()*100+'vw';s.style.top=(-10-Math.random()*20)+'px';s.style.animationDuration=(1.1+Math.random()*1.2)+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),2500)}}
+ // Starfield background canvas: resize to device pixels, animate softly.
+ const canvas=document.getElementById('sky'),ctx=canvas.getContext('2d');let W=0,H=0,stars=[];
+ function resize(){W=canvas.width=Math.floor(innerWidth*devicePixelRatio);H=canvas.height=Math.floor(innerHeight*devicePixelRatio);canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);stars=Array.from({length:Math.min(115,Math.floor(innerWidth*innerHeight/5200))},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:.4+Math.random()*1.5,a:.2+Math.random()*.7,sp:.004+Math.random()*.012,p:Math.random()*6.28}))}
+ function draw(){ctx.clearRect(0,0,innerWidth,innerHeight);for(const s of stars){s.p+=s.sp;const a=s.a*(.65+.35*Math.sin(s.p));ctx.beginPath();ctx.fillStyle=`rgba(255,232,190,${a})`;ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill()}requestAnimationFrame(draw)}
+ const fx=document.getElementById('fx'),fctx=fx.getContext('2d');function sizeFx(){fx.width=Math.floor(innerWidth*devicePixelRatio);fx.height=Math.floor(innerHeight*devicePixelRatio);fx.style.width=innerWidth+'px';fx.style.height=innerHeight+'px';fctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}resize();sizeFx();addEventListener('resize',()=>{resize();sizeFx()});draw();
+ // Prevent browser gesture scroll and accidental text selection on this full-screen experience.
+ document.addEventListener('touchmove',e=>e.preventDefault(),{passive:false});
+})();
+</script>
+</body>
+</html>
